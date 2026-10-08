@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261008-royal-ambient" />
+  <link rel="stylesheet" href="style.css?v=20261008-royal-responsive" />
   <style>
     body { background: var(--ink); }
     .admin-shell {
@@ -289,6 +289,24 @@
       padding: 28px;
       text-align: center;
       color: #d6d6d6;
+    }
+    .dashboard-grid > *, .admin-header-copy { min-width: 0; }
+    .slot, td { overflow-wrap: anywhere; }
+    .admin-panel { overflow-x: auto; }
+    @media (max-width: 1000px) {
+      .dashboard-grid { grid-template-columns: minmax(0, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .admin-shell { padding: 100px 16px 48px; }
+      .calendar-card, .report-card, .agenda-card { padding: 16px; }
+      .calendar-grid { grid-template-columns: minmax(0, 1fr); }
+      .admin-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      .stat-card { padding: 14px; transform: none !important; }
+      .admin-header-actions { width: 100%; }
+      .admin-header-actions .btn { width: 100%; text-align: center; }
+      .toolbar { flex-wrap: wrap; }
+      .toolbar input, .toolbar select, .date-filter { min-width: 0; max-width: 100%; font-size: 16px; }
+      .mini-btn { min-height: 44px; }
     }
     @media (max-width: 640px) {
       table { display: block; overflow-x: auto; }
