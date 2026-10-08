@@ -308,8 +308,52 @@
       .toolbar input, .toolbar select, .date-filter { min-width: 0; max-width: 100%; font-size: 16px; }
       .mini-btn { min-height: 44px; }
     }
+    .toolbar input { flex: 1 1 260px; }
+    .toolbar select { flex: 0 1 220px; }
+    .stat-value, .report-value { overflow-wrap: anywhere; }
+    .user-pill { max-width: 100%; white-space: normal; }
+    .admin-header-copy { flex: 1 1 240px; }
+    .admin-header-actions { flex: 1 1 400px; justify-content: flex-end; }
+    .slot { min-width: 0; }
+    .date-filter { min-height: 44px; }
+    .mini-btn { min-height: 44px; }
+    @media (min-width: 641px) {
+      .agenda-card table { min-width: 700px; }
+    }
     @media (max-width: 640px) {
-      table { display: block; overflow-x: auto; }
+      .admin-header-actions { flex-basis: 100%; justify-content: flex-start; }
+      .admin-header-actions .user-pill { width: 100%; justify-content: center; }
+      .toolbar { display: grid; grid-template-columns: minmax(0, 1fr); }
+      .toolbar input, .toolbar select { width: 100%; min-width: 0; min-height: 48px; font-size: 16px; }
+      .calendar-header .date-filter { width: 100%; }
+      .agenda-card table, .agenda-card tbody { display: block; width: 100%; }
+      .agenda-card thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+      .agenda-card tr {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        padding: 16px;
+        margin-bottom: 14px;
+        background: var(--ink);
+        border: 1px solid var(--steel-line);
+        border-radius: 6px;
+      }
+      .agenda-card td { display: block; min-width: 0; padding: 0; border: 0; }
+      .agenda-card td::before {
+        content: attr(data-label);
+        display: block;
+        color: var(--hazard);
+        font-family: var(--font-mono);
+        font-size: 10px;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+      }
+      .agenda-card td[data-label="Cliente"], .agenda-card td[data-label="Serviço"],
+      .agenda-card td[data-label="Ações"] { grid-column: 1 / -1; }
+      .admin-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .admin-actions button:last-child { grid-column: 1 / -1; }
+      .stat-value { font-size: clamp(22px, 6vw, 34px); }
+      .report-item { flex-wrap: wrap; }
     }
   </style>
 </head>
@@ -336,7 +380,7 @@
     <div class="admin-header">
       <div class="admin-header-copy">
         <p class="admin-header-kicker">Sistema do proprietário</p>
-        <p class="admin-header-greeting">Bom trabalho, Jhon Lennon</p>
+        <p class="admin-header-greeting">Bom trabalho, Royal Barber</p>
         <h1>Jhon Lennon</h1>
       </div>
 
@@ -363,7 +407,7 @@
       <div class="calendar-card">
         <div class="calendar-header">
           <h2>Agenda do dia</h2>
-          <input class="date-filter" type="date" id="dateFilter" />
+          <input class="date-filter" type="date" id="dateFilter" aria-label="Data da agenda" />
         </div>
         <div class="calendar-grid" id="calendarGrid"></div>
       </div>
@@ -400,23 +444,23 @@
 
     <section class="admin-panel agenda-card">
       <div class="toolbar">
-        <input id="searchInput" type="text" placeholder="Buscar cliente ou telefone" />
-        <select id="statusFilter">
+        <input id="searchInput" aria-label="Buscar cliente ou telefone" type="text" placeholder="Buscar cliente ou telefone" />
+        <select id="statusFilter" aria-label="Filtrar por status">
           <option value="">Todos os status</option>
           <option value="pendente">Pendente</option>
           <option value="confirmado">Confirmado</option>
           <option value="cancelado">Cancelado</option>
         </select>
       </div>
-      <table>
+      <table aria-label="Lista de agendamentos">
         <thead>
           <tr>
-            <th>Cliente</th>
-            <th>Serviço</th>
-            <th>Data</th>
-            <th>Hora</th>
-            <th>Status</th>
-            <th>Ações</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Serviço</th>
+            <th scope="col">Data</th>
+            <th scope="col">Hora</th>
+            <th scope="col">Status</th>
+            <th scope="col">Ações</th>
           </tr>
         </thead>
         <tbody id="agendaBody"></tbody>
@@ -499,15 +543,15 @@
         emptyState.hidden = true;
         tbody.innerHTML = agendamentos.map((item) => `
           <tr>
-            <td>
+            <td data-label="Cliente">
               <strong>${item.cliente_nome}</strong><br>
               <small>${item.cliente_telefone || 'Sem telefone'}</small>
             </td>
-            <td>${item.servico_nome}<br><small>${item.barbeiro_nome || `Barbeiro ${item.barbeiro_id || 1}`}</small></td>
-            <td>${formatarData(item.data)}</td>
-            <td>${item.hora}</td>
-            <td><span class="status-pill status-${item.status}">${item.status}</span></td>
-            <td>
+            <td data-label="Serviço">${item.servico_nome}<br><small>${item.barbeiro_nome || `Barbeiro ${item.barbeiro_id || 1}`}</small></td>
+            <td data-label="Data">${formatarData(item.data)}</td>
+            <td data-label="Hora">${item.hora}</td>
+            <td data-label="Status"><span class="status-pill status-${item.status}">${item.status}</span></td>
+            <td data-label="Ações">
               <div class="admin-actions">
                 <button class="mini-btn confirmar" data-id="${item.id}" data-status="confirmado">Confirmar</button>
                 <button class="mini-btn cancelar" data-id="${item.id}" data-status="cancelado">Cancelar</button>
