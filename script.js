@@ -3,6 +3,7 @@
 // Formato: código do país (55) + DDD (11) + número, sem espaços ou símbolos.
 // ==========================================================================
 const WHATSAPP_NUMBER = '5511933679420';
+const STATIC_SITE = window.location.hostname.endsWith('.github.io');
 const STORAGE_KEY = 'billcuts_agendamentos';
 const BARBEIROS = {
   1: 'Barbeiro 1',
@@ -228,18 +229,23 @@ async function atualizarHorarioDisponivel() {
   const ultimoHorario = Math.floor((fim - duracao) / 30) * 30;
 
   let ocupados = [];
+  if (!STATIC_SITE) {
   try {
     const response = await fetch(`/api/disponibilidade?data=${encodeURIComponent(dataSelecionada)}&barbeiroId=${barbeiroId}`);
+    if (!response.ok) throw new Error('Falha ao consultar disponibilidade.');
     const disponibilidade = await response.json();
     if (requestId !== disponibilidadeRequestId) return;
     ocupados = disponibilidade.ocupados || [];
   } catch {
+    if (requestId !== disponibilidadeRequestId) return;
     const empty = document.createElement('div');
     empty.className = 'choice-empty';
     empty.textContent = 'Não foi possível carregar os horários. Tente novamente.';
     timePicker.appendChild(empty);
     timePicker.classList.add('is-disabled');
     return;
+  }
+
   }
 
   for (let minutos = inicio; minutos <= ultimoHorario; minutos += 30) {
@@ -261,6 +267,12 @@ async function atualizarHorarioDisponivel() {
     timePicker.appendChild(button);
   }
 
+  if (!timePicker.children.length) {
+    const empty = document.createElement('div');
+    empty.className = 'choice-empty';
+    empty.textContent = 'Não há horários para esta data e duração. Escolha outra data.';
+    timePicker.appendChild(empty);
+  }
   timePicker.classList.remove('is-disabled');
   if (valorAtual && timePicker.querySelector(`[data-value="${valorAtual}"]`)) {
     horaInput.value = valorAtual;
@@ -310,6 +322,17 @@ function montarMensagemPainel(dados) {
 }
 
 if (form && formNote) {
+  if (STATIC_SITE) {
+    formNote.textContent = 'Escolha seu horário preferido e envie pelo WhatsApp. A barbearia confirmará a disponibilidade.';
+    const availabilityHint = document.querySelector('#timePicker')?.parentElement;
+    if (availabilityHint) {
+      const hint = document.createElement('small');
+      hint.className = 'field-hint';
+      hint.textContent = 'Horários do expediente, sujeitos à confirmação pelo WhatsApp.';
+      availabilityHint.appendChild(hint);
+    }
+    form.querySelector('button[type="submit"]').textContent = 'Solicitar pelo WhatsApp';
+  }
   if (telefoneInput) {
     telefoneInput.addEventListener('input', () => {
       telefoneInput.value = formatarTelefone(telefoneInput.value);
@@ -360,7 +383,7 @@ if (form && formNote) {
       hora: form.hora.value,
       obs: form.obs.value.trim(),
       barbeiroId,
-      barbeiro: BARBEIROS[barbeiroId] || 'Barbeiro 1',
+      barbeiro: barbeiroSelecionado?.closest('label')?.querySelector('strong')?.textContent || BARBEIROS[barbeiroId] || 'Barbeiro 1',
     };
 
     if (!dados.servicoIds.length) {
@@ -381,6 +404,12 @@ if (form && formNote) {
     if (!validacao.ok) {
       formNote.textContent = validacao.message;
       formNote.classList.add('is-error');
+      return;
+    }
+
+    if (STATIC_SITE) {
+      const mensagem = montarMensagemPainel({ ...dados, data: formatarDataBR(dados.data) });
+      window.location.assign(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensagem)}`);
       return;
     }
 
