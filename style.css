@@ -3,16 +3,19 @@
    Mudar a identidade do site inteiro é mudar estas variáveis.
    ========================================================================== */
 :root {
-  --ink: #0B0B0C;
-  --ink-2: #17171A;
-  --ink-3: #232326;
-  --paper: #F2EEE3;
-  --paper-dim: #C9C6BC;
-  --accent: #FF4713;
-  --accent-dark: #C93409;
-  --hazard: #FFD400;
-  --steel: #8A8D91;
-  --steel-line: #3A3A3D;
+  --ink: #061827;
+  --ink-2: #0B2236;
+  --ink-3: #123149;
+  --paper: #FFFFFF;
+  --paper-dim: #C8D7E5;
+  --accent: #608EFF;
+  --accent-button: #1253FF;
+  --accent-button-hover: #0F43CF;
+  --accent-dark: #10358C;
+  --hazard: #8AB4FF;
+  --steel: #9BB1C6;
+  --steel-line: #29445C;
+  --steel-on-light: #29445C;
 
   --font-display: 'Anton', sans-serif;
   --font-body: 'Archivo', sans-serif;
@@ -73,7 +76,7 @@ input, select, textarea { font: inherit; color: inherit; }
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  background: rgba(11,11,12,0.9);
+  background: rgba(6,24,39,0.94);
   backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--steel-line);
 }
@@ -87,7 +90,7 @@ input, select, textarea { font: inherit; color: inherit; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 170px;
+  min-width: 68px;
   padding: 4px 0;
   transition: transform 0.2s ease;
 }
@@ -96,20 +99,22 @@ input, select, textarea { font: inherit; color: inherit; }
 }
 .brand-logo {
   display: block;
-  width: clamp(180px, 22vw, 250px);
-  height: auto;
-  filter: drop-shadow(0 0 0 rgba(0,0,0,0), 0 10px 22px rgba(255, 212, 0, 0.12), 0 6px 18px rgba(0, 0, 0, 0.28));
+  width: auto;
+  height: 64px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 0 rgba(0,0,0,0), 0 10px 22px rgba(18, 83, 255, 0.12), 0 6px 18px rgba(0, 0, 0, 0.28));
   transition: filter 0.2s ease, transform 0.2s ease;
 }
 .brand:hover .brand-logo {
-  filter: drop-shadow(0 0 20px rgba(255, 212, 0, 0.18), 0 8px 18px rgba(0, 0, 0, 0.36));
+  filter: drop-shadow(0 0 20px rgba(18, 83, 255, 0.18), 0 8px 18px rgba(0, 0, 0, 0.36));
   transform: scale(1.01);
 }
 .brand--footer {
   min-width: 0;
 }
 .brand-logo--footer {
-  width: 190px;
+  width: 160px;
+  height: auto;
   max-width: 100%;
 }
 
@@ -137,13 +142,13 @@ input, select, textarea { font: inherit; color: inherit; }
   font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
-  background: var(--accent);
-  color: var(--ink);
+  background: var(--accent-button);
+  color: var(--paper);
   padding: 10px 18px;
   border-radius: var(--radius);
   transition: transform 0.15s ease, background 0.15s ease;
 }
-.nav-cta:hover { background: var(--hazard); transform: translateY(-2px); }
+.nav-cta:hover { background: var(--accent-button-hover); transform: translateY(-2px); }
 
 .menu-btn {
   display: none;
@@ -220,8 +225,8 @@ input, select, textarea { font: inherit; color: inherit; }
   border-radius: var(--radius);
   transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
 }
-.btn-primary { background: var(--accent); color: var(--ink); }
-.btn-primary:hover { background: var(--hazard); transform: translateY(-2px); }
+.btn-primary { background: var(--accent-button); color: var(--paper); }
+.btn-primary:hover { background: var(--accent-button-hover); transform: translateY(-2px); }
 .btn-ghost { border: 2px solid var(--paper); color: var(--paper); }
 .btn-ghost:hover { border-color: var(--hazard); color: var(--hazard); transform: translateY(-2px); }
 .btn-danger { border: 1px solid #ff6b3d; color: #ff9d7f; background: rgba(255, 71, 19, 0.08); }
@@ -245,7 +250,7 @@ input, select, textarea { font: inherit; color: inherit; }
 .sticker-2 { bottom: 18%; right: 16%; transform: rotate(6deg); background: var(--hazard); }
 @media (max-width: 860px) { .sticker { display: none; } }
 
-/* Faixa diagonal amarelo/preto — "fita de perigo", usada como divisor de seção */
+/* Faixa diagonal em azul e azul-marinho, usada como divisor de seção */
 .hazard-strip {
   height: 14px;
   background: repeating-linear-gradient(-45deg, var(--hazard) 0 20px, var(--ink) 20px 40px);
@@ -327,7 +332,7 @@ input, select, textarea { font: inherit; color: inherit; }
 .price-tag-time {
   font-family: var(--font-mono);
   font-size: 12px;
-  color: var(--steel);
+  color: var(--steel-on-light);
   text-transform: uppercase;
   margin-bottom: 10px;
 }
@@ -436,7 +441,7 @@ input, select, textarea { font: inherit; color: inherit; }
 .input-shell:focus-within {
   background: var(--ink-3);
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(255, 71, 19, 0.1);
+  box-shadow: 0 0 0 3px rgba(18, 83, 255, 0.1);
 }
 .input-mark {
   display: grid;
@@ -456,7 +461,7 @@ input, select, textarea { font: inherit; color: inherit; }
   background: transparent !important;
   box-shadow: none !important;
 }
-.input-shell input::placeholder { color: #6f7074; }
+.input-shell input::placeholder { color: #9BB1C6; }
 .input-shell:has(input:not(:placeholder-shown)) .input-mark { color: var(--accent); }
 .form-row textarea { resize: vertical; }
 .service-picker {
@@ -479,7 +484,7 @@ input, select, textarea { font: inherit; color: inherit; }
 }
 .service-option:hover { border-color: var(--steel); transform: translateY(-1px); }
 .service-option:has(input:checked) {
-  background: rgba(255, 71, 19, 0.12);
+  background: rgba(18, 83, 255, 0.12);
   border-color: var(--accent);
   box-shadow: inset 3px 0 0 var(--accent);
 }
@@ -525,7 +530,7 @@ input, select, textarea { font: inherit; color: inherit; }
 }
 .choice-button:hover { border-color: var(--steel); color: var(--paper); }
 .choice-button.is-selected {
-  background: rgba(255, 71, 19, 0.14);
+  background: rgba(18, 83, 255, 0.14);
   border-color: var(--accent);
   color: var(--paper);
   box-shadow: inset 3px 0 0 var(--accent);
@@ -657,8 +662,46 @@ input, select, textarea { font: inherit; color: inherit; }
 /* ==========================================================================
    ANIMAÇÃO DE ENTRADA — aplicada via JS quando o elemento entra na tela
    ========================================================================== */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.reveal.is-visible { opacity: 1; transform: translateY(0); }
+.reveal {
+  opacity: 0;
+  translate: 0 24px;
+  transition: opacity 0.65s ease var(--reveal-delay, 0ms), translate 0.65s ease var(--reveal-delay, 0ms), transform 0.2s ease, box-shadow 0.2s ease;
+}
+.reveal.is-visible { opacity: 1; translate: 0 0; }
+
+@keyframes royal-enter {
+  from { opacity: 0; translate: 0 22px; }
+  to { opacity: 1; translate: 0 0; }
+}
+@keyframes royal-glow {
+  from { opacity: 0.25; }
+  to { opacity: 0.6; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-inner > .eyebrow { animation: royal-enter 0.7s ease both; }
+  .hero-title .stencil { animation: royal-enter 0.8s ease both; }
+  .hero-title .stencil:nth-child(1) { animation-delay: 0.1s; }
+  .hero-title .stencil:nth-child(2) { animation-delay: 0.22s; }
+  .hero-title .stencil:nth-child(3) { animation-delay: 0.34s; }
+  .hero-sub { animation: royal-enter 0.8s ease 0.46s both; }
+  .hero-actions { animation: royal-enter 0.8s ease 0.58s both; }
+  .hero-texture { animation: royal-glow 5s ease-in-out 4 alternate; }
+  .login-box { animation: royal-enter 0.65s ease both; }
+  .admin-header { animation: royal-enter 0.65s ease both; }
+}
+.btn, .nav-cta { transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease; }
+.btn-primary:hover, .nav-cta:hover { box-shadow: 0 6px 24px rgba(18, 83, 255, 0.3); }
+.btn:active, .nav-cta:active { transform: translateY(1px) scale(0.98); }
+.btn:focus-visible, .nav-cta:focus-visible, .choice-button:focus-visible {
+  outline: 2px solid var(--hazard);
+  outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; translate: none; }
+  .btn:hover, .btn:active, .nav-cta:hover, .nav-cta:active,
+  .price-tag:hover, .brand:hover, .brand:hover .brand-logo,
+  .service-option:hover { transform: none; }
+}
 
 /* ==========================================================================
    RESPONSIVO — menu mobile

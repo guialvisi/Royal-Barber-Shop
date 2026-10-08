@@ -2,15 +2,16 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<title>Royal Barber shop</title>
 
 <!-- Fontes: Anton para títulos de impacto, Archivo para leitura, Space Mono para preços/etiquetas -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="style.css?v=20260910-5">
+<link rel="stylesheet" href="style.css?v=20261008-royal-motion">
 <style>
   .admin-login-modal {
     position: fixed;
     inset: 0;
-    background: rgba(10, 10, 11, 0.78);
+    background: rgba(6, 24, 39, 0.84);
     display: none;
     align-items: center;
     justify-content: center;
@@ -25,8 +26,8 @@
   .admin-login-panel {
     position: relative;
     width: min(420px, 100%);
-    background: #19191b;
-    border: 1px solid #3a3a3d;
+    background: var(--ink-2);
+    border: 1px solid var(--steel-line);
     padding: 32px 24px 24px;
     box-shadow: 8px 10px 0 rgba(0, 0, 0, 0.35);
   }
@@ -37,7 +38,7 @@
     right: 12px;
     background: transparent;
     border: none;
-    color: #f5f1e8;
+    color: var(--paper);
     font-size: 26px;
     cursor: pointer;
     line-height: 1;
@@ -77,8 +78,8 @@
 
   .admin-login-form input {
     width: 100%;
-    background: #111;
-    border: 1px solid #3a3a3d;
+    background: var(--ink);
+    border: 1px solid var(--steel-line);
     color: #fff;
     padding: 12px 14px;
     margin-bottom: 18px;
@@ -102,8 +103,8 @@
 <!-- ================= HEADER ================= -->
 <header class="site-header" id="header">
   <div class="wrap header-inner">
-    <a href="#home" class="brand" aria-label="BARBEARIA SARTORI">
-      <img src="logo-billcuts.svg" alt="BARBEARIA SARTORI" class="brand-logo" />
+    <a href="#home" class="brand" aria-label="Royal Barber shop">
+      <img src="logo-royal.png" alt="Royal Barber shop" class="brand-logo" />
     </a>
 
     <nav class="nav" id="nav">
@@ -128,7 +129,7 @@
   <section class="hero" id="home">
     <div class="hero-texture" aria-hidden="true"></div>
     <div class="wrap hero-inner">
-      <p class="eyebrow">Bragança Paulista · BARBEARIA SARTORI</p>
+      <p class="eyebrow">Bragança Paulista · Royal Barber shop</p>
 
       <h1 class="hero-title">
         <span class="stencil" data-text="SEU CORTE.">SEU CORTE.</span>
@@ -159,7 +160,7 @@
         <h2 class="section-title">NASCEU NA RUA,<br>CRESCEU NA NAVALHA.</h2>
       </div>
       <div class="sobre-text">
-        <p>A BARBEARIA SARTORI nasceu em Bragança Paulista com uma ideia simples: barbearia de verdade é aquela que respeita seu tempo e entrega um corte que representa quem você é. Nada de fórmula pronta.</p>
+        <p>A Royal Barber shop nasceu em Bragança Paulista com uma ideia simples: barbearia de verdade é aquela que respeita seu tempo e entrega um corte que representa quem você é. Nada de fórmula pronta.</p>
         <p>Aqui cada cliente senta na cadeira e sai com estilo próprio — do clássico ao navalhado, do social ao mais ousado. Ambiente sem frescura, atendimento direto, resultado que fala por si.</p>
       </div>
     </div>
@@ -231,7 +232,7 @@
       <div class="section-head">
         <p class="eyebrow">Marque já</p>
         <h2 class="section-title">BORA<br>AGENDAR?</h2>
-        <p class="agendar-desc">Preencha o formulário e sua solicitação será enviada diretamente para o painel administrativo da BARBEARIA SARTORI.</p>
+        <p class="agendar-desc">Preencha o formulário e sua solicitação será enviada diretamente para o painel administrativo da Royal Barber shop.</p>
       </div>
 
       <form class="form" id="bookingForm" novalidate>
@@ -264,11 +265,6 @@
             <label>Escolha o barbeiro</label>
             <span class="field-status">Obrigatório</span>
           </div>
-          <div class="service-picker" id="barbeiroPicker" role="radiogroup" aria-label="Escolha o barbeiro">
-            <label class="service-option">
-              <input type="radio" name="barbeiro" value="1" checked>
-              <span><strong>Barbeiro Jhon Lennon</strong><small>Disponível</small></span>
-            </label>
             <label class="service-option">
               <input type="radio" name="barbeiro" value="2">
               <span><strong>Barbeiro Tonni</strong><small>Disponível</small></span>
@@ -330,7 +326,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary btn-block">Enviar seu agendamento</button>
-        <p class="form-note" id="formNote">Sua solicitação será enviada para o painel administrativo da BARBEARIA SARTORI. Confirmação sujeita à disponibilidade.</p>
+        <p class="form-note" id="formNote">Sua solicitação será enviada para o painel administrativo da Royal Barber shop. Confirmação sujeita à disponibilidade.</p>
       </form>
     </div>
   </section>
@@ -343,13 +339,13 @@
       <div>
         <div class="section-head">
           <p class="eyebrow">Onde estamos</p>
-        <h2 class="section-title">ENCONTRE A<br>BARBEARIA SARTORI</h2>
+        <h2 class="section-title">ENCONTRE A<br>Royal Barber shop</h2>
         </div>
 
         <ul class="info-list">
           <li>
             <strong>Endereço</strong>
-            <span>BARBEARIA JOHN LENNON · Bragança Paulista - SP</span>
+            <span>Royal Barber shop · Bragança Paulista - SP</span>
           </li>
           <li>
             <strong>WhatsApp</strong>
@@ -357,7 +353,7 @@
           </li>
           <li>
             <strong>Instagram</strong>
-            <span><a href="https://www.instagram.com/barbearia_sartori_/" target="_blank" rel="noopener noreferrer">@barbearia_sartori_</a></span>
+            <span><a href="https://www.instagram.com/barbearia_sartori_/" target="_blank" rel="noopener noreferrer">Royal Barber shop</a></span>
           </li>
         </ul>
 
@@ -374,7 +370,7 @@
         <iframe
           src="https://www.google.com/maps?q=-22.933853,-46.5520913&output=embed"
           width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade" title="Mapa da Barbearia John Lennon - Bragança Paulista">
+          referrerpolicy="no-referrer-when-downgrade" title="Mapa da Royal Barber shop - Bragança Paulista">
         </iframe>
       </div>
     </div>
@@ -385,14 +381,14 @@
 <!-- ================= FOOTER ================= -->
 <footer class="site-footer">
   <div class="wrap footer-inner">
-    <a href="#home" class="logo logo--footer">BARBEARIA <span>SARTORI</span></a>
+    <a href="#home" class="brand brand--footer" aria-label="Royal Barber shop"><img src="logo-royal.png" alt="Royal Barber shop" class="brand-logo brand-logo--footer" /></a>
     <nav class="footer-nav">
       <a href="#sobre">A Casa</a>
       <a href="#servicos">Serviços</a>
       <a href="#agendar">Agendar</a>
       <a href="#local">Localização</a>
     </nav>
-    <p class="footer-copy">© <span id="year"></span> BARBEARIA SARTORI. Todos os direitos reservados.</p>
+    <p class="footer-copy">© <span id="year"></span> Royal Barber shop. Todos os direitos reservados.</p>
   </div>
 </footer>
 
@@ -401,6 +397,6 @@
   <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 0 0 3.85 1h.003a7.94 7.94 0 0 0 5.55-13.58ZM12.05 18.4h-.003a6.58 6.58 0 0 1-3.36-.92l-.24-.14-2.5.66.67-2.44-.16-.25a6.6 6.6 0 1 1 12.24-3.5 6.56 6.56 0 0 1-6.62 6.59Zm3.62-4.93c-.2-.1-1.17-.58-1.35-.64s-.31-.1-.44.1-.5.64-.62.77-.23.15-.43.05a5.4 5.4 0 0 1-1.59-.98 5.96 5.96 0 0 1-1.1-1.37c-.12-.2 0-.3.09-.4s.2-.23.29-.35a1.3 1.3 0 0 0 .2-.33.37.37 0 0 0 0-.35c-.05-.1-.44-1.06-.6-1.45s-.32-.33-.44-.33h-.38a.72.72 0 0 0-.53.25 2.2 2.2 0 0 0-.68 1.63 3.8 3.8 0 0 0 .8 2.03 8.7 8.7 0 0 0 3.34 2.95c.47.2.83.32 1.12.41a2.7 2.7 0 0 0 1.24.08 2.03 2.03 0 0 0 1.33-.94 1.65 1.65 0 0 0 .12-.94c-.05-.09-.18-.14-.37-.24Z"/></svg>
 </a>
 
-<script src="script.js?v=20260910-5"></script>
+<script src="script.js?v=20261008-royal-motion"></script>
 </body>
 </html>

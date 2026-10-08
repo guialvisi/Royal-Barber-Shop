@@ -1,4 +1,4 @@
-# Deploy da BARBEARIA SARTORI
+# Deploy da Royal Barber shop
 
 ## Opção 1: Render (mais simples)
 

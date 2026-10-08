@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login do Dono | BARBEARIA SARTORI</title>
+  <title>Login do Dono | Royal Barber shop</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=20261008-royal-motion" />
   <style>
-    body { background: #111; }
+    body { background: var(--ink); }
     .login-wrap {
       min-height: 100vh;
       display: grid;
@@ -18,8 +18,8 @@
     }
     .login-box {
       width: min(420px, 100%);
-      background: #19191b;
-      border: 1px solid #3a3a3d;
+      background: var(--ink-2);
+      border: 1px solid var(--steel-line);
       padding: 32px 24px;
       border-radius: 2px;
       box-shadow: 8px 10px 0 rgba(0, 0, 0, 0.35);
@@ -29,7 +29,7 @@
       width: min(260px, 78%);
       height: auto;
       margin: 0 auto 20px;
-      filter: drop-shadow(0 0 18px rgba(255, 212, 0, 0.14), 0 12px 28px rgba(0, 0, 0, 0.35));
+      filter: drop-shadow(0 0 18px rgba(18, 83, 255, 0.18), 0 12px 28px rgba(0, 0, 0, 0.35));
     }
     .login-box p {
       color: var(--paper-dim);
@@ -46,8 +46,8 @@
     }
     .login-form input {
       width: 100%;
-      background: #111;
-      border: 1px solid #3a3a3d;
+      background: var(--ink);
+      border: 1px solid var(--steel-line);
       padding: 12px 14px;
       border-radius: 2px;
       margin-bottom: 18px;
@@ -67,8 +67,8 @@
 <body>
   <div class="login-wrap">
     <div class="login-box">
-      <img src="logo-billcuts.svg" alt="BARBEARIA SARTORI" class="login-logo" />
-      <p>Seja bem-vindo, Jhon Lennon (Jhon). Este painel é exclusivo para a gestão da BARBEARIA SARTORI.</p>
+      <img src="logo-royal.png" alt="Royal Barber shop" class="login-logo" />
+      <p>Seja bem-vindo, Jhon Lennon (Jhon). Este painel é exclusivo para a gestão da Royal Barber shop.</p>
 
       <form class="login-form" id="loginForm">
         <label for="password">Senha</label>

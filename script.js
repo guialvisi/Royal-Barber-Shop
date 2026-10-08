@@ -298,7 +298,7 @@ function isHorarioValido(dateString, timeString, durationMinutes = 0) {
 
 function montarMensagemPainel(dados) {
   return [
-    'Novo agendamento na BARBEARIA SARTORI',
+    'Novo agendamento na Royal Barber shop',
     `Nome: ${dados.nome}`,
     `Telefone: ${dados.telefone}`,
     `Barbeiro: ${dados.barbeiro}`,
@@ -425,8 +425,16 @@ const revealTargets = document.querySelectorAll(
   '.section-head, .price-tag, .sobre-text, .info-list, .map-frame, .form'
 );
 
-if ('IntersectionObserver' in window) {
-  revealTargets.forEach((el) => el.classList.add('reveal'));
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+if ('IntersectionObserver' in window && !reducedMotion.matches) {
+  revealTargets.forEach((el) => {
+    el.classList.add('reveal');
+    if (el.classList.contains('price-tag')) {
+      const cards = Array.from(el.parentElement.children);
+      el.style.setProperty('--reveal-delay', `${(cards.indexOf(el) % 3) * 90}ms`);
+    }
+  });
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -437,10 +445,16 @@ if ('IntersectionObserver' in window) {
         }
       });
     },
-    { threshold: 0.15 }
+    { threshold: 0, rootMargin: '0px 0px -40px 0px' }
   );
 
   revealTargets.forEach((el) => observer.observe(el));
+  reducedMotion.addEventListener('change', (event) => {
+    if (event.matches) {
+      observer.disconnect();
+      revealTargets.forEach((el) => el.classList.add('is-visible'));
+    }
+  });
 } else {
   revealTargets.forEach((el) => el.classList.add('is-visible'));
 }
