@@ -743,3 +743,15 @@ input, select, textarea { font: inherit; color: inherit; }
   .nav-link { padding: 14px 0; border-bottom: 1px solid var(--steel-line); }
   .nav-cta { margin-top: 16px; text-align: center; }
 }
+
+/* Movimento contínuo da faixa de Serviços. */
+@keyframes royal-services-strip {
+  from { background-position: 0 0; }
+  to { background-position: 56.568542px 0; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .sobre + .hazard-strip--label {
+    background-size: 56.568542px 56.568542px;
+    animation: royal-services-strip 3s linear infinite;
+  }
+}
