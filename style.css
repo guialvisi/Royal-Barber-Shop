@@ -674,10 +674,29 @@ input, select, textarea { font: inherit; color: inherit; }
   to { opacity: 1; translate: 0 0; }
 }
 @keyframes royal-glow {
-  from { opacity: 0.25; }
-  to { opacity: 0.6; }
+  from { opacity: 0.3; translate: 0 0; }
+  to { opacity: 0.5; translate: 8px -8px; }
 }
+@keyframes royal-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -6px; }
+}
+@keyframes royal-ambient {
+  from { transform: translate3d(-2%, 1%, 0) scale(1); opacity: 0.45; }
+  to { transform: translate3d(3%, -2%, 0) scale(1.06); opacity: 0.65; }
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 78% 36%, rgba(18, 83, 255, 0.13), transparent 55%);
+}
+.hero-texture { pointer-events: none; }
 @media (prefers-reduced-motion: no-preference) {
+  .hero::before { animation: royal-ambient 18s ease-in-out infinite alternate; }
+  .sticker-1 { animation: royal-float 7s ease-in-out infinite; }
+  .sticker-2 { animation: royal-float 9s ease-in-out -3s infinite; }
   .hero-inner > .eyebrow { animation: royal-enter 0.7s ease both; }
   .hero-title .stencil { animation: royal-enter 0.8s ease both; }
   .hero-title .stencil:nth-child(1) { animation-delay: 0.1s; }
@@ -685,7 +704,7 @@ input, select, textarea { font: inherit; color: inherit; }
   .hero-title .stencil:nth-child(3) { animation-delay: 0.34s; }
   .hero-sub { animation: royal-enter 0.8s ease 0.46s both; }
   .hero-actions { animation: royal-enter 0.8s ease 0.58s both; }
-  .hero-texture { animation: royal-glow 5s ease-in-out 4 alternate; }
+  .hero-texture { animation: royal-glow 12s ease-in-out infinite alternate; }
   .login-box { animation: royal-enter 0.65s ease both; }
   .admin-header { animation: royal-enter 0.65s ease both; }
 }
